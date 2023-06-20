@@ -1,9 +1,7 @@
 function create_directory_tree() {
     # Функция для создания каталогов по абсолютным путям и файлов в них
 
-    # declare -ir local random_paths_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
-    # declare -ir local random_paths_count=$((RANDOM % 5 + 1))
-            declare -ir local random_paths_count=2
+    declare -ir local random_paths_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
     declare -r local creation_date=$(get_creation_date)
 
     rm -f ${FOLDER_NAMES} ${FILE_NAMES}
@@ -22,8 +20,7 @@ function create_directory_tree() {
 function create_dirs() {
     # Функция для создания каталогов
 
-    # declare -i local random_folder_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
-    declare -i local random_folder_count=$((RANDOM % 10 + 1))
+    declare -i local random_folder_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
 
     for folder_name in $(sed -n "1,${argv[folder_count]:-${random_folder_count}}p"   \
                                                                  ${FOLDER_NAMES}); do
@@ -39,8 +36,7 @@ function create_files() {
     declare local file
 
     for folder in ${absolute_path}/${FOLDERS_DIR}/*; do
-        # declare -i local random_file_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
-        declare -i local random_file_count=$((RANDOM % 10 + 1))
+        declare -i local random_file_count=$((RANDOM % ${MAX_OBJ_COUNT} + 1))
 
         for file_name in $(sed -n "1,${argv[file_count]:-${random_file_count}}p" ${FILE_NAMES}); do
             check_available_space
